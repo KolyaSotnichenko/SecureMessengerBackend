@@ -1,5 +1,5 @@
 const redis = require('redis')
-const publisher = redis.createClient({legacyMode: true})
+const publisher = redis.createClient([process.env.REDIS_URL, {legacyMode: true}])
 
 exports.publishMessage = (channel, message) => {
     publisher.publish(channel, message)

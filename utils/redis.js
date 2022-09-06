@@ -1,6 +1,8 @@
 const redis = require('redis')
 const publisher = redis.createClient(process.env.REDIS_URL)
 
+await publisher.connected()
+
 exports.publishMessage = (channel, message) => {
     publisher.publish(channel, message)
 }

@@ -8,11 +8,8 @@ exports.publishMessage = (channel, message) => {
 
 
 exports.getSubscriber = (channel) => {
-    const subscriber = redis.createClient({url: process.env.REDIS_URL, legacyMode: true})
+    const subscriber = redis.createClient({url: process.env.REDIS_URL})
     subscriber.connect()
-    subscriber.v4.set('key', 'value', {
-        NX: true
-    });
     subscriber.subscribe(channel)
     return subscriber
 }

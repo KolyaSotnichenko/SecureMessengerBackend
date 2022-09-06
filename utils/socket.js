@@ -12,6 +12,8 @@ exports.onConnect = socket => {
         userId = id
         subscriber = getSubscriber(userId) // redis subscriber on a channel = `#userId`
 
+        await subscriber.connect()
+
         // subscriber event for new messages to our user
         subscriber.on('message', (channel, message) => {
             socket.emit('newMessage', message)

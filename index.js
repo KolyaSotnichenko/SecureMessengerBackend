@@ -30,7 +30,7 @@ io.on('connection', onConnect)
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }
 ).then((d) => {
-    http.listen(process.env.SERVER_PORT || 5000, () => console.log(`Example app listening on port ${process.env.SERVER_PORT || 5000}!`))
+    http.listen(process.env.PORT || 5000, () => console.log(`Example app listening on port ${process.env.PORT || 5000}!`))
 }).catch(err => {
     console.log(err)
 })

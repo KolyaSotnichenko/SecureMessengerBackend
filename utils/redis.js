@@ -1,11 +1,5 @@
 const redis = require('redis')
-const publisher = redis.createClient({
-    url: process.env.REDIS_URL,
-    socket: {
-      tls: true,
-      rejectUnauthorized: false
-    }
-  });
+const publisher = redis.createClient(process.env.REDIS_URL)
 
 exports.publishMessage = (channel, message) => {
     publisher.publish(channel, message)

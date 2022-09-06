@@ -4,7 +4,7 @@ const host = 'awesome.redis.server'
 const port = 6380
 
 const url = `redis://${host}:${port}`
-const publisher = createClient({ url })
+const publisher = redis.createClient({ url })
 
 // const publisher = redis.createClient({
 //     url: process.env.REDIS_URL,
@@ -35,7 +35,7 @@ exports.getSubscriber = (channel) => {
     const port = 6380
 
     const url = `redis://${host}:${port}`
-    const publisher = createClient({ url })
+    const subscriber = redis.createClient({ url })
     subscriber.subscribe(channel)
     return subscriber
 }

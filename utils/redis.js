@@ -1,8 +1,8 @@
 const redis = require('redis')
 
 const { endpointUri, password } = require('../config').redis;
-const publisher = redis.createClient(`redis://${endpointUri}`);
-const subscriber = redis.createClient(`redis://${endpointUri}`);
+const publisher = redis.createClient(`redis://${endpointUri}`, {password});
+const subscriber = redis.createClient(`redis://${endpointUri}`, {password});
 
 (async () => {
     try {

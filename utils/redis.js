@@ -1,6 +1,6 @@
 const redis = require('redis')
 const publisher = redis.createClient({
-    url: process.env.REDIS_URL,
+    url: REDIS_URL,
     socket: {
       tls: true,
       rejectUnauthorized: false
@@ -13,7 +13,7 @@ exports.publishMessage = (channel, message) => {
 
 exports.getSubscriber = (channel) => {
     const subscriber = redis.createClient({
-        url: process.env.REDIS_URL,
+        url: REDIS_URL,
         socket: {
           tls: true,
           rejectUnauthorized: false

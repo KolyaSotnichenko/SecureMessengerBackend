@@ -1,7 +1,5 @@
 const redis = require('redis')
 var url = require('url');
-
-const { endpointUri, password } = require('../config').redis;
 // var redisURL = url.parse(process.env.REDISCLOUD_URL);
 const publisher = redis.createClient(process.env.REDISCLOUD_URL, {legacyMode: true}, {no_ready_check: true});
 const subscriber = redis.createClient(process.env.REDISCLOUD_URL, {legacyMode: true}, {no_ready_check: true});
@@ -12,7 +10,7 @@ const subscriber = redis.createClient(process.env.REDISCLOUD_URL, {legacyMode: t
         await subscriber.connect()
     } catch (error) {
         console.log('error while connecting redis', error)
-        console.log(endpointUri)
+        console.log(process.env.REDISCLOUD_URL)
     }
 })()
 

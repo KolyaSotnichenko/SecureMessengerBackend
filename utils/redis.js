@@ -3,9 +3,8 @@ const redis = require('redis')
 const { endpointUri, password } = require('../config').redis;
 const publisher = redis.createClient(`redis://${endpointUri}`, {password});
 
-await publisher.connect()
-
-exports.publishMessage = (channel, message) => {
+exports.publishMessage = async (channel, message) => {
+    await publisher.connect()
     publisher.publish(channel, message)
 }
 

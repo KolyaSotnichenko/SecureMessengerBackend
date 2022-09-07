@@ -1,4 +1,5 @@
 const redis = require('redis')
+var url = require('url');
 
 const { endpointUri, password } = require('../config').redis;
 var redisURL = url.parse(process.env.REDISCLOUD_URL);

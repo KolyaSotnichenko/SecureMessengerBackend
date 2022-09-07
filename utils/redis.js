@@ -2,15 +2,22 @@ const redis = require('redis')
 
 const { endpointUri, password } = require('../config').redis;
 const publisher = redis.createClient(`redis://${endpointUri}`, {password});
+const subscriber = redis.createClient(`redis://${endpointUri}`, {password});
 
-exports.publishMessage = async (channel, message) => {
-    await publisher.connect()
+(async () => {
+    try {
+        await publisher.connect()
+        await subscriber.connect()
+    } catch (error) {
+        console.log('error while connecting redis', error)
+    }
+})
+
+exports.publishMessage = (channel, message) => {
     publisher.publish(channel, message)
 }
 
-exports.getSubscriber = async (channel) => {
-    const subscriber = redis.createClient(`redis://${endpointUri}`, {password});
-    await subscriber.connect()
+exports.getSubscriber = (channel) => {
     subscriber.subscribe(channel)
     return subscriber
 }

@@ -19,6 +19,6 @@ exports.publishMessage = (channel, message) => {
 }
 
 exports.getSubscriber = (channel) => {
-    subscriber.subscribe(channel)
+    subscriber.subscribe('channel', channel)
     return subscriber
 }

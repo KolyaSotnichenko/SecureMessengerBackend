@@ -11,7 +11,7 @@ const subscriber = redis.createClient(`redis://${endpointUri}`);
     } catch (error) {
         console.log('error while connecting redis', error)
     }
-})
+})()
 
 exports.publishMessage = (channel, message) => {
     publisher.publish(channel, message)

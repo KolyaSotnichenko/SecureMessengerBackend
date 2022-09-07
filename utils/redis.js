@@ -10,6 +10,7 @@ const subscriber = redis.createClient(`redis://${endpointUri}`, {password});
         await subscriber.connect()
     } catch (error) {
         console.log('error while connecting redis', error)
+        console.log(endpointUri)
     }
 })()
 

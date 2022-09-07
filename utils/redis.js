@@ -1,12 +1,13 @@
 const redis = require('redis')
 
-const publisher = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true});
-const subscriber = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true});
+const publisher = redis.createClient(process.env.REDISCLOUD_URL);
+const subscriber = redis.createClient(process.env.REDISCLOUD_URL);
 
 (async () => {
     try {
         await publisher.connect()
         await subscriber.connect()
+        console.log("ok")
     } catch (error) {
         console.log('error while connecting redis', error)
         console.log('REDISCLOUD_URL: ', process.env.REDISCLOUD_URL)

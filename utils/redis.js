@@ -1,8 +1,8 @@
 const redis = require('redis')
 var url = require('url');
 // var redisURL = url.parse(process.env.REDISCLOUD_URL);
-const publisher = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true, legacyMode: true});
-const subscriber = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true, legacyMode: true});
+const publisher = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true});
+const subscriber = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true});
 
 (async () => {
     try {

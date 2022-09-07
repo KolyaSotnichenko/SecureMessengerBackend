@@ -10,7 +10,7 @@ exports.publishMessage = async (channel, message) => {
 
 exports.getSubscriber = async (channel) => {
     const subscriber = redis.createClient(`redis://${endpointUri}`, {password});
-    await subscriber.connect(s)
+    await subscriber.connect()
     subscriber.subscribe(channel)
     return subscriber
 }

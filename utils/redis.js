@@ -2,9 +2,9 @@ const redis = require('redis')
 var url = require('url');
 
 const { endpointUri, password } = require('../config').redis;
-var redisURL = url.parse(process.env.REDISCLOUD_URL);
-const publisher = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
-const subscriber = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
+// var redisURL = url.parse(process.env.REDISCLOUD_URL);
+const publisher = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true});
+const subscriber = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true});
 
 (async () => {
     try {

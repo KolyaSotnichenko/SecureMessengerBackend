@@ -32,8 +32,8 @@ exports.onConnect = socket => {
         if (u.expoPushToken !== 'none' && u.acceptNotifications) {
             await sendPushNotification({
                 to: u.expoPushToken,
-                title: `You have new messages!`,
-                body: `Check your app`,
+                title: `У вас є нові повідомлення!`,
+                body: `Перевірте програму`,
             })
         }
     })

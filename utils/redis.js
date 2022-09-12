@@ -14,11 +14,11 @@ const subscriber = redis.createClient({url: process.env.REDISCLOUD_URL}, {no_rea
     }
 })()
 
-exports.publishMessage = (channel, message) => {
-    publisher.publish(channel, message)
+exports.publishMessage = async (channel, message) => {
+    await publisher.publish(channel, message)
 }
 
-exports.getSubscriber = (channel) => {
-    subscriber.subscribe('channel', channel)
+exports.getSubscriber = async (channel) => {
+    await subscriber.subscribe('channel', channel)
     return subscriber
 }

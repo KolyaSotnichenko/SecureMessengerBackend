@@ -1,7 +1,7 @@
 const User = require('../models/user')
 
 exports.authenticate = async (req, res, next) => {
-    // read these from header
+    
     const userId = req.get('userId')
     const installationId = req.get('installationId')
 
